@@ -23,6 +23,12 @@
   border: solid 1px black;
 }
 
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* xs */
 @media (min-width: 475px) {
   .container {
