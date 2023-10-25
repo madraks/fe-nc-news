@@ -40,9 +40,7 @@
   font-size: var(--size-base);
   justify-self: flex-start;
 }
-.card-body{
 
-}
 .comment__card__body{
   text-align: left;
   font-size: var(--size-sm);

@@ -51,4 +51,11 @@ const fetchComments = (article_id) => {
     })
 }
 
-export { fetchAllArticles, fetchArticleByID, fetchUsers, fetchUser, fetchComments }
+const updateVotesOnArticle = (article_id, value) => {
+  return api.patch(`/articles/${article_id}`, {inc_votes: value})
+    .then((res) => {
+      return res.data.updatedArticle;
+    })
+}
+
+export { fetchAllArticles, fetchArticleByID, fetchUsers, fetchUser, fetchComments, updateVotesOnArticle }
