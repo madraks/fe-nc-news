@@ -5,7 +5,7 @@ export default function Nav() {
     <nav className="container">
       <ul className="nav__bar__container">
         <li className="nav__bar__links">
-          <NavLink to="/" exact activeClassName="active">
+          <NavLink to="/" activeClassName="active">
             Home
           </NavLink>
         </li>

@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import './App.css'
 import '../styles/header.css'
 import '../styles/articles.css'
 import '../styles/article.css'
 import '../styles/nav.css'
+import '../styles/comments.css'
 import '../styles/utils.css';
 import { Routes, Route } from 'react-router-dom' 
 import Header from './components/Header'
@@ -14,7 +14,7 @@ import Nav from './components/Nav'
 function App() {
 
   return (
-    <div className='container'>
+    <div className=''>
     <div className="top">
       <Header/>
       <Nav />

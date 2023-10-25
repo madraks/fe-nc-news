@@ -34,4 +34,21 @@ const fetchUsers = () => {
     })
 }
 
-export { fetchAllArticles, fetchArticleByID, fetchUsers }
+const fetchUser = (username) => {
+  return api.get(`/users/${username}`)
+    .then((res) => {
+      return res.data.user;
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+const fetchComments = (article_id) => {
+  return api.get(`/articles/${article_id}/comments`)
+    .then((res) => {
+      return res.data.comments;
+    })
+}
+
+export { fetchAllArticles, fetchArticleByID, fetchUsers, fetchUser, fetchComments }
