@@ -10,7 +10,7 @@
 }
 
 .nav__bar__links *:hover {
-  color: slateblue;
+  color: #747bff;
 }
 
 nav.container {
@@ -22,7 +22,7 @@ nav.container {
 }
 
 .active {
-  color: slateblue;
+  color: #747bff;;
 }
 
 
