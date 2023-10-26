@@ -12,6 +12,7 @@ export default function SingleArticle() {
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
 
+
   const handleVoteUpdate = (newVote) => {
     
     setVotes(newVote)

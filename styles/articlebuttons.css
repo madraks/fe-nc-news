@@ -13,6 +13,7 @@
 
 .active-btn {
   border: 5px solid black;
+  opacity: 0.7;
 }
 
 /* xs */

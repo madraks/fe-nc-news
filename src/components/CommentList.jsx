@@ -6,9 +6,14 @@ import HeartLike from './HeartLike.jsx';
 export default function CommentList({ article }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [votes, setVotes] = useState(0);
 
   const handleCommentUpdate = (newComments) => {
     setComments(newComments);
+  }
+
+  const handleVoteUpdate = (value) => {
+    setVotes(value);
   }
 
   useEffect(() => {
@@ -24,17 +29,14 @@ export default function CommentList({ article }) {
   return (
     <>
       <h3 className='comment__container__title'>Comments</h3>
-      <InsertComment comments={comments} handleComment={handleCommentUpdate}/>
+      <InsertComment comments={comments} handleComment={handleCommentUpdate} handleVote={handleVoteUpdate}/>
       {comments.map((comment) => {
         return (
           <section key={comment.comment_id} className="comment__card__container">
             <header className="comment__card__header">
               <ul className="list-group">
-                <li className="list-group-item comment__card__votes">
-                  {comment.votes}
-                </li>
                 <li className='list-group-item comment__card__like'>
-                  <HeartLike/>
+                  <HeartLike comment_id={comment.comment_id} votes={comment.votes} handleVote={handleVoteUpdate}/>
                 </li>
                 <li className="list-group-item comment__card__author">
                   {comment.author}

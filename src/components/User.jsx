@@ -3,7 +3,12 @@ import { createContext, useState, useContext } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [loggedIn, setLoggedIn] = useState({username: 'jessjelly', name: "Jess Jelly", avatar_url: "https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"});
+  const defaultUser = { username: "", name: "", avatar_url: ""};
+  const [loggedIn, setLoggedIn] = useState(defaultUser);
+
+  const signOut = () => {
+    setLoggedIn(defaultUser);
+  }
 
   return (
     <UserContext.Provider value={{ loggedIn, setLoggedIn }}>
@@ -17,13 +22,13 @@ export default function SignInToggle() {
 
   const toggleUser = () => {
     setLoggedIn((currUser) => {
-      return currUser == {username: 'jessjelly', name: "Jess Jelly", avatar_url: "https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"} ? "signedIn" : "signedOut";
+      return currUser == {username: 'jessjelly', name: "Jess Jelly", avatar_url: "https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141"} ? "true" : "false";
     });
   };
 
   return (
     <>
-      <h2>{loggedIn}</h2>
+      <h2>{loggedIn.username}</h2>
       <button onClick={toggleUser}>Toggle User</button>
     </>
   );

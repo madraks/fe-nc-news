@@ -3,12 +3,14 @@
   min-height: 75px;
   /* display: flex; */
   align-items: center;
+  
 }
 
 .header {
   display: block;
   font-size: var(--size-3xl);
   padding-left: 1rem;
+  text-align: center;
 }
 
 /* xs */
