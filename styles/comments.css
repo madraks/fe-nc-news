@@ -52,6 +52,14 @@
   font-size: var(--size-xs);
 }
 
+.comment__like__button {
+  background-color: white;
+}
+
+.active-comment-like {
+  fill: red !important;
+}
+
 /* xs */
 @media (min-width: 475px) {}
 

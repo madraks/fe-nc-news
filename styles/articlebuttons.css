@@ -8,11 +8,11 @@
 }
 
 .article__voting__button:hover {
-  border: 3px solid; /* this line made the svg hover look crazy */
+  border: 5px solid black; /* this line made the svg hover look crazy */
 }
 
-.active {
-  border: 5px solid blue;
+.active-btn {
+  border: 5px solid black;
 }
 
 /* xs */

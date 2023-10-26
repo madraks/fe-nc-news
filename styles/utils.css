@@ -29,6 +29,10 @@
   justify-content: center;
 }
 
+button {
+  background-color: white;
+}
+
 /* xs */
 @media (min-width: 475px) {
   .container {

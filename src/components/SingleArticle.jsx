@@ -10,24 +10,24 @@ export default function SingleArticle() {
   const [user, setUser] = useState([]);
   const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const { article_id } = useParams()
+  const { article_id } = useParams();
 
   const handleVoteUpdate = (newVote) => {
+    
     setVotes(newVote)
   }
 
   useEffect(() => {
-
-    Promise.all([fetchArticleByID(article_id)])
-      .then(([article]) => {
-        setVotes(article.votes)
-        setArticle(article);
-        return fetchUser(article.author);
-      })
-      .then((correctUser) => {
-        setUser(correctUser);
-        setIsLoading(false);
-      })
+    fetchArticleByID(article_id)
+    .then((article) => {
+      setVotes(article.votes)
+      setArticle(article);
+      return fetchUser(article.author);
+    })
+    .then((correctUser) => {
+      setUser(correctUser);
+      setIsLoading(false);
+    })
   }, [article_id])
 
   if (isLoading) {
