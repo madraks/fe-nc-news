@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { fetchComments } from '../api/api.js'
+import InsertComment from './InsertComment.jsx';
+import HeartLike from './HeartLike.jsx';
 
 export default function CommentList({ article }) {
-  const [comments, setComments] = useState();
+  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleCommentUpdate = (newComments) => {
+    setComments(newComments);
+  }
 
   useEffect(() => {
     fetchComments(article.article_id)
@@ -15,10 +21,10 @@ export default function CommentList({ article }) {
 
   if (isLoading) return <h2>Loading...</h2>
 
-
   return (
     <>
       <h3 className='comment__container__title'>Comments</h3>
+      <InsertComment comments={comments} handleComment={handleCommentUpdate}/>
       {comments.map((comment) => {
         return (
           <section key={comment.comment_id} className="comment__card__container">
@@ -28,32 +34,25 @@ export default function CommentList({ article }) {
                   {comment.votes}
                 </li>
                 <li className='list-group-item comment__card__like'>
-                <input
-                    type="checkbox"
-                    id={`tbg-btn-1`}
-                    onChange={(e) => console.log(e)}
-                  />
-                  <label htmlFor={`tbg-btn-1`}>
-                    <img src={`/heart-svgrepo-com.svg`} alt="like button, shape of heart" />
-                  </label>
+                  <HeartLike/>
                 </li>
                 <li className="list-group-item comment__card__author">
                   {comment.author}
                 </li>
               </ul>
             </header>
-              <p className="comment__card__body">
-                {comment.body}
-              </p>
+            <p className="comment__card__body">
+              {comment.body}
+            </p>
             <p className="comment__card__footer">
-              {comment.created_at.slice(0, 10)}
+              {comment.created_at ? comment.created_at.slice(0, 10) : "..a few seconds ago"}
             </p>
           </section>
         )
       })}
     </>
   );
-  
+
 
 
 }

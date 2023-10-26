@@ -1,12 +1,13 @@
 .nav__bar__container {
   padding: 0;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .nav__bar__links {
   list-style: none;
-  font-size: var(--size-2xl);
+  font-size: var(--size-xl);
 }
 
 .nav__bar__links *:hover {
@@ -19,6 +20,14 @@ nav.container {
 
 .nav__bar__links * {
   color: black;
+}
+
+.nav__bar__hero {
+  width: 25px;
+  border: 2px solid black;
+  padding: 5px;
+  box-shadow: 0px 0px 5px 3px rgb(200, 200, 200);
+  border-radius: 50%;
 }
 
 .active {
@@ -35,18 +44,34 @@ nav.container {
   .nav__bar__links{
     font-size: var(--size-3xl);
   }
+  .nav__bar__hero {
+    width: 40px;
+    margin-left: 10px;
+  }
 }
 
 /* md */
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+  .nav__bar__hero{
+    margin-left: 40px;
+  }
+}
 
 /* lg */
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+  .nav__bar__hero {
+    width: 50px;
+  }
+}
 
 /* xl */
 @media (min-width: 1280px) {
   .nav__bar__links {
-    font-size: var(--size-4xl)
+    font-size: var(--size-4xl);
+    margin-left: 50px;
+  }
+  .nav__bar__hero {
+    width: 60px;
   }
 }
 

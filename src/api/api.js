@@ -58,4 +58,10 @@ const updateVotesOnArticle = (article_id, value) => {
     })
 }
 
-export { fetchAllArticles, fetchArticleByID, fetchUsers, fetchUser, fetchComments, updateVotesOnArticle }
+const postComment = (article_id, user, value) => {
+  api.post(`/articles/${article_id}/comments`, { username: user, body: value })
+    .then((res) => {
+      return res.data.comment;
+    })
+}
+export { fetchAllArticles, fetchArticleByID, fetchUsers, fetchUser, fetchComments, updateVotesOnArticle, postComment }
