@@ -34,12 +34,12 @@ function App() {
       <Routes>
         <Route path="*" element={<ErrorPageNotFound />}/>
         <Route path="/" element={<ArticlesList/>}/>
-        <Route path="/articles" element={<ArticlesList/>}/>
+        <Route path="articles" element={<ArticlesList/>}/>
         <Route path="articles/:article_id" element={<SingleArticle />} />
-        <Route path="/topics" element={<TopicsList/>}/>
+        <Route path="topics" element={<TopicsList/>}/>
         <Route path="topics/:topic" element={<ArticlesTopics/>}/>
-        <Route path="/profile" element={<UserProfile />} />
-        <Route path="/login" element={<Login/>}/>
+        <Route path="profile" element={<UserProfile />} />
+        <Route path="login" element={<Login/>}/>
       </Routes>
     </div>
   )
