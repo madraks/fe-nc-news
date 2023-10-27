@@ -9,6 +9,9 @@ export default function InsertComment({ comments, handleComment, handleVote }) {
   const { loggedIn } = useContext(UserContext);
   const { article_id } = useParams();
   const [ submittedComment, setSubmittedComment] = useState('');
+  const [invalidComment, setInvalidComment] = useState(false);
+
+  if(invalidComment) return <p>No empty comments</p>
 
   const renderComment = (renderedComment) => {
     return (
@@ -35,11 +38,13 @@ export default function InsertComment({ comments, handleComment, handleVote }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (newComment.length === 0) {
+    if (newComment.trim().length === 0) {
+      setInvalidComment(true);
       throw new Error();
     }
 
     setSubmittedComment((current) => {
+      setInvalidComment(false)
       return newComment;
     })
     
@@ -65,7 +70,7 @@ export default function InsertComment({ comments, handleComment, handleVote }) {
       <button className="form__submit" style={{ backgroundColor: 'white' }} type="submit">Post</button>
     </form>
     <>
-      {submittedComment ? (
+      {submittedComment.trim().length > 0 ? (
         renderComment(submittedComment)
       ) : (
         <p></p>
