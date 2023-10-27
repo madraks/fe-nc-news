@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { fetchArticleByID, fetchUser } from "../api/api";
 import CommentList from './CommentList'
 import ArticleVotingButtons from "./ArticleVotingButtons";
+import ErrorPageNotFound from "./ErrorPageNotFound";
 
 
 export default function SingleArticle() {
@@ -11,6 +12,7 @@ export default function SingleArticle() {
   const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
+  const [error, setError] = useState(false);
 
 
   const handleVoteUpdate = (newVote) => {
@@ -21,6 +23,10 @@ export default function SingleArticle() {
   useEffect(() => {
     fetchArticleByID(article_id)
       .then((article) => {
+        if (article === undefined) {
+          setError(true);
+          setIsLoading(false);
+        }
         setVotes(article.votes)
         setArticle(article);
         return fetchUser(article.author);
@@ -31,8 +37,12 @@ export default function SingleArticle() {
       })
   }, [article_id])
 
+
   if (isLoading) {
     return <h1>Loading article...</h1>
+  }
+  if (error) {
+    return <ErrorPageNotFound returnPath="/articles"/>
   }
 
   return (

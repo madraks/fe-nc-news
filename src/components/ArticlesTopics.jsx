@@ -2,6 +2,7 @@ import { useState } from "react";
 import { fetchArticlesByTopic } from "../api/api";
 import { useParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
+import ErrorPageNotFound from "./ErrorPageNotFound";
 
 
 export default function ArticlesTopics() {
@@ -9,14 +10,24 @@ export default function ArticlesTopics() {
   const [articles, setArticles] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const { topic } = useParams();
+  const [error, setError] = useState(false);
 
   fetchArticlesByTopic(topic)
     .then((data) => {
+      if(data === undefined) {
+        console.log(data);
+        setError(true);
+        setIsLoading(false)
+      }
       setArticles(data);
       setIsLoading(false);
     })
 
+    
     if (isLoading) return <h2>Loading</h2>
+    if (error) {
+      return <ErrorPageNotFound returnPath="/topics" />
+    }
 
     return (
       <div className="container">

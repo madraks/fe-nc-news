@@ -68,6 +68,18 @@
   animation-iteration-count: 3;
 }
 
+.custom-alert-like {
+  box-sizing: border-box;
+  position: absolute;
+  font-size: var(--size-xs);
+  border: solid 1px lightgray;
+  transform: translateY(-150px) translateX(-100px);
+  width: 100px;
+  background-color: rgb(209, 209, 209);
+  border-radius: 15px;
+  padding: 5px;
+}
+
 @keyframes flash {
   from { 
     background-color: white;

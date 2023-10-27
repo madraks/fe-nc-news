@@ -19,6 +19,7 @@ import UserProfile from './components/UserProfile'
 import TopicsList from './components/TopicsList';
 import ArticlesTopics from './components/ArticlesTopics'
 import Login from './components/Login'
+import ErrorPageNotFound from './components/ErrorPageNotFound'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
       <Nav />
     </div>
       <Routes>
+        <Route path="*" element={<ErrorPageNotFound />}/>
         <Route path="/" element={<ArticlesList/>}/>
         <Route path="/articles" element={<ArticlesList/>}/>
         <Route path="articles/:article_id" element={<SingleArticle />} />
