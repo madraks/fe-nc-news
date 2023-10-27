@@ -30,7 +30,6 @@ export default function ArticlesList() {
       <select name="sort-by" id="sort-by" onChange={((e) => { setSortBy(e.target.value) })}>
         <option value="date">Most Recent</option>
         <option value="title">Alphabetical</option>
-        <option value="comment">Comments</option>
         <option value="votes">Votes</option>
         <option value="author">Author</option>
       </select>
