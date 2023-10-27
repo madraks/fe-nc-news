@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchArticleByID, fetchUser } from "../api/api";
 import CommentList from './CommentList'
 import ArticleVotingButtons from "./ArticleVotingButtons";
@@ -14,21 +14,21 @@ export default function SingleArticle() {
 
 
   const handleVoteUpdate = (newVote) => {
-    
+
     setVotes(newVote)
   }
 
   useEffect(() => {
     fetchArticleByID(article_id)
-    .then((article) => {
-      setVotes(article.votes)
-      setArticle(article);
-      return fetchUser(article.author);
-    })
-    .then((correctUser) => {
-      setUser(correctUser);
-      setIsLoading(false);
-    })
+      .then((article) => {
+        setVotes(article.votes)
+        setArticle(article);
+        return fetchUser(article.author);
+      })
+      .then((correctUser) => {
+        setUser(correctUser);
+        setIsLoading(false);
+      })
   }, [article_id])
 
   if (isLoading) {
@@ -45,8 +45,8 @@ export default function SingleArticle() {
         <p className="single__article__author">{article.author}</p>
         <p className="single__article__date">Date posted: {article.created_at.slice(0, 10)}</p>
         <div className="single__article__footer">
-          <ArticleVotingButtons article_id={article_id} votes={article.votes} handleVotes={handleVoteUpdate}/>
-          <p className="single__article__topic">{article.topic}</p>
+          <ArticleVotingButtons article_id={article_id} votes={article.votes} handleVotes={handleVoteUpdate} />
+          <Link to={`/topics/${article.topic}`}><p className="single__article__topic">{article.topic}</p></Link>
         </div>
       </article>
       <CommentList article={article} />

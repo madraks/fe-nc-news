@@ -7,7 +7,6 @@ const api = axios.create({
 const fetchAllArticles = (sortby, order) => {
   return api.get('/articles', { params: { sortBy: sortby, order: order}})
     .then((res) => {
-      console.log(res.data.articles);
       return res.data.articles;
     })
     .catch((err) => {
@@ -100,4 +99,9 @@ const updateCommentVote = (comment_id, value) => {
     })
 }
 
-export { updateCommentVote, fetchAllArticles, fetchArticleByID, fetchUsers, fetchUser, fetchComments, updateVotesOnArticle, postComment, fetchArticlesByTopic, fetchAllTopics }
+const removeComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`)
+
+}
+
+export { updateCommentVote, fetchAllArticles, fetchArticleByID, fetchUsers, fetchUser, fetchComments, updateVotesOnArticle, postComment, fetchArticlesByTopic, fetchAllTopics, removeComment }
