@@ -9,7 +9,7 @@ import '../styles/insertcomment.css'
 import '../styles/topics.css'
 import '../styles/utils.css';
 import { Routes, Route } from 'react-router-dom' 
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { UserContext } from './components/User'
 import Header from './components/Header'
 import ArticlesList from './components/ArticlesList'
@@ -23,7 +23,14 @@ import ErrorPageNotFound from './components/ErrorPageNotFound'
 
 function App() {
 
-  const { loggedIn } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
+  const savedUser = JSON.parse(localStorage.getItem('user'));
+
+  useEffect(() => {
+    if(savedUser) {
+      setLoggedIn(savedUser);
+    }
+  }, [])
 
   return (
     <div className='container'>

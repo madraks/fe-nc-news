@@ -7,6 +7,7 @@ export const UserProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(defaultUser);
 
   const signOut = () => {
+    localStorage.removeItem('user');
     setLoggedIn(defaultUser);
   }
 

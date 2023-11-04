@@ -15,6 +15,8 @@ export default function Login() {
     fetchUser(username)
       .then((data) => {
         setLoggedIn(data);
+        localStorage.removeItem('user');
+        localStorage.setItem('user', JSON.stringify(data))
       })
   }
 
